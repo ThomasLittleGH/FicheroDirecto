@@ -26,17 +26,36 @@ public class App {
         do {
             opcion = "0";
             System.out.println("*** Menu Fichero ***");
-            System.out.println("1) Ingresar datos \n2) Visualisar datos \n0) Salir");
+            System.out.println("\n1) Agregar");
+            System.out.println("2) Busqueda por nombre");
+            System.out.println("3) Busqueda por registro");
+            System.out.println("4) Modificar");
+            System.out.println("5) Eliminar");
+            System.out.println("6) Mostrar");
+            System.out.println("0) Salir");
             opcion = input.nextLine();
             
             switch (opcion) {
                 case "0":
+                    archivo.close();
                     break;
                 case "1":
-                    guardarDatos();
+                    // Ingreso de datos
                     break;
                 case "2":
-                    leerDatos();
+                    // Busqueda por nombre
+                    break;
+                case "3":
+                    // Busqueda por registro
+                    break;
+                case "4":
+                    // Modificar
+                    break;
+                case "5":
+                    // Eliminar
+                    break;
+                case "6":
+                    // Mostrar
                     break;
                 default: // Si el usuario no ingresa un dato valido el programa le avisa
                     System.out.println("Error 01 - seleccione un numero valido");
@@ -44,11 +63,5 @@ public class App {
             }
         } while (opcion != "0");
         
-    }
-    public static void guardarDatos(){
-
-    }
-    public static void leerDatos(){
-
     }
 }
