@@ -79,6 +79,10 @@ public class App {
         archivo.seek(pos);
         nombre = (nombre.length() < 13) ? nombre + " ".repeat(12 - nombre.length()) : "errorNombre";
         // Se guardan los datos en el fichero
+        archivo.writeInt(registro);
+        archivo.writeUTF(nombre);
+        archivo.writeChar(sexo);
+        archivo.close();
     }
 
 
