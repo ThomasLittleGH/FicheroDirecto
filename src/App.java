@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Scanner;
 
@@ -18,7 +19,7 @@ public class App {
         Scanner input = new Scanner(System.in);
         String opcion = "0";
         int reg = 0; // Numero del registro
-        archivo = new RandomAccessFile(NOMBREARCHIVO, "rw"); // Se instancia el archivo, hay 2 modos, "r" o read, y "rw" o read & write
+        archivo = new RandomAccessFile(fichero, "rw"); // Se instancia el archivo, hay 2 modos, "r" o read, y "rw" o read & write
         int pos = (archivo.length() == 0) ? 0 : (int)archivo.length() - TAMANO; // Posicion  -> total de bytes por registro
         archivo.seek(pos); // Se posiciona en el registro correspondiente
         int registro = (archivo.length() == 0) ? 0: archivo.readInt(); // Se almacena el numero de registro de la ultima pos
@@ -41,6 +42,7 @@ public class App {
                     break;
                 case "1":
                     // Ingreso de datos
+                    ingresoData(registro, input);
                     break;
                 case "2":
                     // Busqueda por nombre
@@ -62,6 +64,22 @@ public class App {
                     break;
             }
         } while (opcion != "0");
-        
     }
+
+    static void ingresoData(int registro, Scanner input, long pos) throws IOException{
+        System.out.println("Registro: " + registro);
+        System.out.println("Nombre: ");
+        String nombre = input.next();
+        System.out.println("Sexo: ");
+        char sexo = input.next().charAt(0);
+        guardarData(registro, nombre, sexo, pos);
+    }
+    static void guardarData(int registro, String nombre, char sexo, long pos) throws IOException{
+        archivo = new RandomAccessFile(fichero, "rw");
+        archivo.seek(pos);
+        nombre = (nombre.length() < 13) ? nombre + " ".repeat(12 - nombre.length()) : "errorNombre";
+        // Se guardan los datos en el fichero
+    }
+
+
 }
