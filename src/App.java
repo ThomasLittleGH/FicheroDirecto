@@ -42,7 +42,7 @@ public class App {
                     break;
                 case "1":
                     // Ingreso de datos
-                    ingresoData(registro, input);
+                    ingresoData(registro, input, pos);
                     break;
                 case "2":
                     // Busqueda por nombre
